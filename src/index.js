@@ -20,6 +20,6 @@ app.use('/api', prodRouter)
 
 
 app.listen(PORT, ()=>{
-    console.log('Corriendo');
+    console.log('Corriendo en produccion ');
     
 })
