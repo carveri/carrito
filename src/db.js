@@ -1,6 +1,5 @@
 import pg from "pg";
-import { configEnv } from "./configEnv.js";
-configEnv('env.dev')
+process.loadEnvFile()
 
 export const pool = new pg.Pool({
     user: process.env.USER_PG,

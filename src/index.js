@@ -1,8 +1,9 @@
 
 import express from "express";
 import prodRouter from "../src/routes/prod.router.js";
-import { configEnv } from "./configEnv.js";
-configEnv('env.dev')
+process.loadEnvFile()
+
+
 
 const app = express()
 // config()
