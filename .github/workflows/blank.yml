@@ -13,6 +13,8 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    runs-on: ubuntu-latest
+    
     env:
       USER_PG: ${{secrets.USER_PG}}
       HOST_PG: ${{secrets.HOST_PG}}
@@ -21,7 +23,19 @@ jobs:
       PORT_PG: ${{secrets.PORT_PG}} 
 
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Mostar mensaje"
+        run: |
+          echo "esto es el valor de la plataforma 1"
+          echo "esto es el valor de la plataforma 2"
+          echo "esto es el valor de la plataforma 3"
+
+      - name: "Mostrar variables por defecto"
+        run: |
+          echo "Evento" 
+
+
 
 
  
