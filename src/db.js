@@ -4,9 +4,9 @@ import pg from "pg";
 export const pool = new pg.Pool({
     user: process.env.USER_PG,
     host: process.env.HOST_PG,
-    database: 'carrito',
+    database: process.env.DATABASE_PG,
     port: process.env.PORT_PG,
-    password: 'Chileylau025'
+    password: process.env.PASSWORD_PG   
 })
 
 pool.query('SELECT NOW()').then(result =>{
