@@ -1,39 +1,24 @@
-# This is a basic workflow to help you get started with Actions
+name: Build and Test
 
-name: CI
+on: [push]
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
     runs-on: ubuntu-latest
-    
-    env:
-      USER_PG: ${{secrets.USER_PG}}
-      HOST_PG: ${{secrets.HOST_PG}}
-      PASSWORD_PG: ${{secrets.PASSWORD_PG}}
-      DATABASE_PG: ${{secrets.DATABASE_PG}}
-      PORT_PG: ${{secrets.PORT_PG}} 
-
-    # The type of runner that the job will run on
-
     steps:
-      - name: "Mostar mensaje"
-        run: |
-          echo "esto es el valor de la plataforma 1"
-          echo "esto es el valor de la plataforma 2"
-          echo "esto es el valor de la plataforma 3"
-
-      - name: "Mostrar variables por defecto"
-        run: |
-          echo "Evento" 
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Run build script with secrets
+        run: node index.js
+        env:
+          USER_PG: ${{secrets.USER_PG}}
+          HOST_PG: ${{secrets.HOST_PG}}
+          DATABASE_PG: ${{secrets.DATABASE_PG}}
+          PORT_PG: ${{secrets.PORT_PG}} 
+          PASSWORD_PG: ${{secrets.PASSWORD_PG}}
 
 
 
